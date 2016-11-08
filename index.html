@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>全屏滚动</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</script>
+</head>
+<body>
+<div id="div1">
+	<div class="wrap">
+		<img class="pic" src="imgs/001.jpg">
+	</div>
+	<div class="wrap">
+		<img class="pic" src="imgs/002.jpg">
+	</div>
+	<div class="wrap">
+		<img class="pic" src="imgs/003.jpg">
+	</div>
+	<div class="wrap">
+		<img class="pic" src="imgs/004.jpg">
+	</div>
+	<div class="wrap">
+		<img class="pic" src="imgs/006.jpg">
+	</div>
+	<div class="wrap">
+		<img class="pic" src="imgs/007.jpg">
+	</div>
+</div>
+<ul class="list">
+	<li class="active">1</li>
+	<li>2</li>
+	<li>3</li>
+	<li>4</li>
+	<li>5</li>
+	<li>6</li>
+</ul>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/roll.js"></script>
+<script type="text/javascript">
+$(function(){
+	roll.resize($('#div1'));
+	$(window).resize(function(){
+		roll.resize($('#div1'));
+	})
+	if(document.addEventListener){
+		document.addEventListener('DOMMouseScroll',fn,false);
+	}
+	document.onmousewheel = fn;
+	function fn(e){
+		var e = e || event;
+		roll.fnRoll(e,{
+			parent : $('#div1'),
+			children : $('.wrap'),
+			tabs : $('.list li'),
+			class : 'active'
+		})
+	}
+
+})
+</script>
+</body>
+</html>
